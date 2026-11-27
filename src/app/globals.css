@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, Cambria, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+
+  /* Eye-comfort warm alabaster & oat stone surfaces */
+  --color-stone-canvas: #F4F2EC;
+  --color-stone-surface: #FAF9F5;
+  --color-stone-tint: #EAE7DD;
+  --color-stone-border: #DDD9CD;
+
+  /* Velvety pine-charcoal dark surfaces (soft contrast, zero halation) */
+  --color-obsidian-canvas: #141917;
+  --color-obsidian-surface: #1B221F;
+  --color-obsidian-elevated: #222B27;
+  --color-obsidian-border: rgba(236, 234, 226, 0.1);
+
+  /* Comfortable ink hierarchy */
+  --color-ink-primary: #1C221F;
+  --color-ink-secondary: #505A54;
+  --color-ink-muted: #707B75;
+
+  /* Calm botanical sage-emerald + warm sand accents */
+  --color-forest-700: #1C6450;
+  --color-forest-600: #227860;
+  --color-signal-400: #5EC4A0;
+  --color-signal-300: #86D8BA;
+  --color-sand-400: #C9975B;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #F4F2EC;
+    color: #1C221F;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #F4F2EC;
+    color: #1C221F;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html[data-theme="light"],
+  html[data-theme="light"] body {
+    background-color: #FAF9F5;
+    color: #18221D;
+  }
+
+  ::selection {
+    background-color: #1C6450;
+    color: #FAF9F5;
+  }
+}
+
+/* Architectural hairline grid — Light (ultra-soft for eye comfort) */
+.bg-arch-grid-light {
+  background-image:
+    linear-gradient(to right, rgba(28, 34, 31, 0.036) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 34, 31, 0.036) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Architectural hairline grid — Bright Daylight Sage */
+.bg-arch-grid-sage {
+  background-image:
+    linear-gradient(to right, rgba(23, 107, 84, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(23, 107, 84, 0.055) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Subtle dot blueprint matrix — Bright Light */
+.bg-dot-light {
+  background-image: radial-gradient(rgba(23, 107, 84, 0.14) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Architectural hairline grid — Dark */
+.bg-arch-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(236, 234, 226, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(236, 234, 226, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Subtle dot blueprint matrix */
+.bg-dot-dark {
+  background-image: radial-gradient(rgba(236, 234, 226, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Editorial serif accent styling */
+.font-editorial {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Vinyl spin & calm audio visualizer bars */
+@keyframes vinyl-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes eq-bar {
+  0%, 100% {
+    transform: scaleY(0.28);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.animate-vinyl-spin {
+  animation: vinyl-spin 11s linear infinite;
+}
+
+.animate-eq-1 {
+  animation: eq-bar 0.85s ease-in-out infinite;
+}
+.animate-eq-2 {
+  animation: eq-bar 0.65s ease-in-out 0.15s infinite;
+}
+.animate-eq-3 {
+  animation: eq-bar 0.95s ease-in-out 0.3s infinite;
+}
+.animate-eq-4 {
+  animation: eq-bar 0.72s ease-in-out 0.45s infinite;
+}
+
+/* Crisp custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #EAE7DD;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #BDB9AC;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1C6450;
+}
+
+/* Reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
